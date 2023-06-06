@@ -63,7 +63,7 @@ void funcTwins(array_single_int inputArr)
     {
         if (inputArr.data[i] != inputArr.data[i + 1])
         {
-            printf("%d", i);
+            printf("%d", i); // print position of non twin pair
             return;
         }
         i++;
