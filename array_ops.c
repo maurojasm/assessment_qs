@@ -24,7 +24,7 @@ char *input(FILE *fp, int size, int has_space)
             actual_size++;
             if (actual_size >= size)
             {
-                str = realloc(str, sizeof(char) * actual_size);
+                str = (char *)realloc(str, sizeof(char) * actual_size);
             }
         }
     }
@@ -36,12 +36,12 @@ char *input(FILE *fp, int size, int has_space)
             actual_size++;
             if (actual_size >= size)
             {
-                str = realloc(str, sizeof(char) * actual_size);
+                str = (char *)realloc(str, sizeof(char) * actual_size);
             }
         }
     }
     actual_size++;
-    str = realloc(str, sizeof(char) * actual_size);
+    str = (char *)realloc(str, sizeof(char) * actual_size);
     str[actual_size - 1] = '\0';
     return str;
 }
@@ -59,7 +59,7 @@ struct array_single_int
  */
 void funcTwins(array_single_int inputArr)
 {
-    for (unsigned int i = 0; i < inputArr.size; i++)
+    for (int i = 0; i < inputArr.size; i++)
     {
         if (inputArr.data[i] != inputArr.data[i + 1])
         {
