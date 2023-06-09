@@ -25,7 +25,7 @@ char *input(FILE *fp, int size, int has_space)
             actual_size++;
             if (actual_size >= size)
             {
-                str = realloc(str, sizeof(char) * actual_size);
+                str = (char *)realloc(str, sizeof(char) * actual_size);
             }
         }
     }
@@ -37,12 +37,12 @@ char *input(FILE *fp, int size, int has_space)
             actual_size++;
             if (actual_size >= size)
             {
-                str = realloc(str, sizeof(char) * actual_size);
+                str = (char *)realloc(str, sizeof(char) * actual_size);
             }
         }
     }
     actual_size++;
-    str = realloc(str, sizeof(char) * actual_size);
+    str = (char *)realloc(str, sizeof(char) * actual_size);
     str[actual_size - 1] = '\0';
     return str;
 }
@@ -64,11 +64,15 @@ array_single_string funcValidPairs(array_single_string inputStr)
     char invalid[8] = "Invalid";
     char valid[6] = "Valid";
     int commaIndx = 0;
+    // for (int idx = 0; idx < inputStr.size; idx++)
+    // {
+    //     printf("%s", inputStr.data[idx].str);
+    // }
 
     for (int coordIndx = 0; coordIndx < inputStr.size; coordIndx++)
     {
         string coord = inputStr.data[coordIndx];
-        for (int i = 0; i < strlen(coord.str); i++)
+        for (unsigned int i = 0; i < strlen(coord.str); i++)
         {
             if (coord.str[i] == ',')
             {
@@ -121,11 +125,9 @@ int main()
     }
 
     array_single_string result = funcValidPairs(inputStr);
-    for (int idx = 0; idx < result.size - 1; idx++)
-    {
-        printf("%s ", result.data[idx].str);
+    for (int idx = 0; idx < result.size; idx++) {
+        printf("%s", result.data[idx].str);
     }
-    printf("%s", result.data[result.size - 1].str);
 
     return 0;
 }
