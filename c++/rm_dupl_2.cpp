@@ -11,6 +11,7 @@ void print(vector<int> nums) {
     std::cout << ']' << std::endl;
 }
 
+// did not work, off by 1
 int my_removeDuplicates(vector<int>& nums) {
     int j = 0, counter = 1;
     for(int i = 1; i < nums.size(); i++) {
@@ -30,27 +31,39 @@ int my_removeDuplicates(vector<int>& nums) {
     return j + 1;
 }
 
+int removeDuplicates(vector<int>& nums) {
+    int i = 0;
+    // int ele= nums[0];
+    for(auto ele : nums) {
+        if(i == 0 || i == 1 || nums[i-2] != ele) {
+            nums[i] = ele;
+            i++;
+        }
+    }
+    return i;
+    }
+
 int main() {
     vector<int> nums1{1, 1, 1, 2}; 
     vector<int> nums2{0,0,1,1,1,2,2,3,3,4};
     vector<int> nums3{0,0,1,1,1,1,2,3,3};
     print(nums1);
-    std::cout << "k = " << my_removeDuplicates(nums1) << '\n';
-    // std::cout << "k = " << removeDuplicates(nums1) << '\n';
+    // std::cout << "k = " << my_removeDuplicates(nums1) << '\n';
+    std::cout << "k = " << removeDuplicates(nums1) << '\n';
     print(nums1);
 
     std::cout << '\n';
 
     print(nums2);
-    std::cout << "k = " << my_removeDuplicates(nums2) << '\n';
-    // std::cout << "k = " << removeDuplicates(nums2) << '\n';
+    // std::cout << "k = " << my_removeDuplicates(nums2) << '\n';
+    std::cout << "k = " << removeDuplicates(nums2) << '\n';
     print(nums2);
 
     std::cout << '\n';
 
     print(nums3);
-    std::cout << "k = " << my_removeDuplicates(nums3) << '\n';
-    // std::cout << "k = " << removeDuplicates(nums2) << '\n';
+    // std::cout << "k = " << my_removeDuplicates(nums3) << '\n';
+    std::cout << "k = " << removeDuplicates(nums2) << '\n';
     print(nums3);
 
     return 0;
