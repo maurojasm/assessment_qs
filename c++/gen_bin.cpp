@@ -1,3 +1,6 @@
+/*
+    Change Decimal Number to Binary
+*/
 #include<iostream>
 
 using namespace std;
