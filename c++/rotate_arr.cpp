@@ -79,6 +79,15 @@ void my_rotate_v4(vector<int>& nums, int k) {
     print(nums);
 }
 
+void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+        if(k!=0){        
+            reverse(nums.end() - k, nums.end());
+            reverse(nums.begin(), nums.end() - k);
+            reverse(nums.begin(), nums.end());
+        }
+    }
+
 int main() {
     vector<int> nums1{1,2,3,4,5,6,7};
     vector<int> nums2{-1,-100,3,99};
