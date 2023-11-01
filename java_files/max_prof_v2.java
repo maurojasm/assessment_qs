@@ -12,7 +12,7 @@ public class max_prof_v2 {
     public static int maxProfit(int[] prices) {
         int max_prof = 0;
         for(int i = 1; i < prices.length; i++) {
-            if(prices[i] > prices[i -1]) {
+            if(prices[i] > prices[i - 1]) {
                 max_prof += prices[i] - prices[i - 1];
             }
         }
